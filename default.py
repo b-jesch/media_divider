@@ -64,12 +64,12 @@ if __name__ == '__main__':
                             print str(e)
 
                     elif params['action'] == 'dry-run':
-                        print '[dry run]: would removed: %s' % filepath
+                        print '[dry run]: will removed: %s' % filepath
                         _fwiped += 1
                     else:
                         pass
                 else:
-                    print '[file size]: wouldn\'t remove because of filesize: %s' % filepath
+                    print '[file size]: will not removed because of filesize: %s' % filepath
                     _fskipped += 1
             else:
                 _fskipped += 1
