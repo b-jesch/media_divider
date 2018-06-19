@@ -20,7 +20,8 @@ I would like to point out that if you use it incorrectly, most of the movies, au
     media:      <root folder> from where starts cleaning recursively
     action:     dry-run | execute
 
-This is a 'dry run', i. only files to be deleted are listed or exceptions are displayed. Before you trigger the executive run, you should look at the generated output on dry-run exactly. If there are files/folders that you do not want to delete, there are several options:
+This is a 'dry run', i.e. only files that will be deleted are listed, or exceptions are displayed. Before you trigger the executive run, you absolutely have a look at the generated output on dry-run.<br>
+If there are files/folders that you don't want to delete, there are several options:
 
 - Complete folders including subfolders can be excluded by creating a (hidden) file named .donotdelete in the folder. The dot (.) in front of the .donotdelete is important!
 - excluded file formats or directories can be permanently inserted in the script itself (line 4/5)
