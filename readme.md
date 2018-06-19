@@ -1,8 +1,10 @@
 <h1>Media Divider</h1>
 
 This Python script frees Kodi media folders from unnecessary waste. This means:
+
 - all empty folders are deleted
 - all folders without media files are deleted
+- all non-media files within the media folders and subfolders are deleted
 
 <b>Media files are:</b>
 
