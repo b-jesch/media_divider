@@ -29,8 +29,10 @@ if __name__ == '__main__':
         exit(1)
     if 'exclude' in params:
         for param in params['exclude'].split(): EXCLUDE_FILE_EXT.append(param.upper())
-        print "excluding files with extension:"
-        print EXCLUDE_FILE_EXT
+
+    print "\nexcluding files with following extension:"
+    print ', *'.join(excludes for excludes in EXCLUDE_FILE_EXT)
+    print "\n"
 
     _dcount = 0
     _fcount = 0
