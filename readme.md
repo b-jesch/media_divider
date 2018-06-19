@@ -11,11 +11,11 @@ This Python script frees Kodi media folders from unnecessary waste. This means:
 - Files with extension Files ending in .MKV, .ISO, .MP4, .MPG, .MPEG, .MOV, .H264, .H265, .TS, .PDF, .FLAC, .WAV, .OGG, .MP3
 - Files with filesize larger then 100MB
 
-I would like to point out that if you use it incorrectly, most of the movies, audio files and pictures can be deleted and are gone forever.
+I would like to point out that if you use this script incorrectly, most of the movies, audio files and pictures can be deleted and are gone forever.
 
-<b>Usage:</b>
+<b>Usage (e.g. LibreElec):</b>
 
-```python default.py media=/storage/videos action=dry-run```
+    python default.py media=/storage/videos action=dry-run
 
 <b>Params:</b>
 
