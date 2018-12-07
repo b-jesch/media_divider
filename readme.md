@@ -1,6 +1,6 @@
 <h1>Media Divider</h1>
 
-This Python script frees Kodi media folders from unnecessary waste. This means:
+This Python script frees Kodi media folders from unnecessary waste. This means after a run:
 
 - all empty folders are deleted
 - all folders without media files are deleted
@@ -8,10 +8,10 @@ This Python script frees Kodi media folders from unnecessary waste. This means:
 
 <b>Media files are:</b>
 
-- Files with extension Files ending in .MKV, .ISO, .MP4, .MPG, .MPEG, .MOV, .H264, .H265, .TS, .PDF, .FLAC, .WAV, .OGG, .MP3
+- Files with extension ending in .MKV, .ISO, .MP4, .MPG, .MPEG, .MOV, .H264, .H265, .TS, .PDF, .FLAC, .WAV, .OGG, .MP3
 - Files with filesize larger then 100MB
 
-I would like to point out that if you use this script incorrectly, most of the movies, audio files and pictures can be deleted and are gone forever.
+I would like to point out that if you use this script incorrectly, most of the movies, audio files and pictures would be deleted and are gone forever.
 
 <b>Usage (e.g. LibreElec):</b>
 
@@ -22,14 +22,14 @@ I would like to point out that if you use this script incorrectly, most of the m
     media:      <root folder> from where starts cleaning recursively
     action:     dry-run | execute
 
-This is a 'dry run', i.e. only files that will be deleted are listed, or exceptions are displayed. Before you trigger the executive run, you absolutely have a look at the generated output on dry-run.<br>
+This is a 'dry run', i.e. only files that would be deleted are listed or exceptions are displayed. Before you trigger the executive run, you absolutely have a look at the generated output on dry-run.<br>
 If there are files/folders that you don't want to delete, there are several options:
 
 - Complete folders including subfolders can be excluded by creating a (hidden) file named .donotdelete in the folder. The dot (.) in front of the .donotdelete is important!
 - excluded file formats or directories can be permanently inserted in the script itself (line 4/5)
 - additional excluded file types/formats can be added optionally to the call by parameter 'exclude'
 
-Example (excluding files with extension NFO, IDX, PNG; naming is case-insensitive):
+Example (excluding files with extension .NFO, .IDX, .PNG; naming is case-insensitive). Separate extensions with space only and use a dot (.) in front of file extensions!
 
     python default.py media=/storage/videos action=dry-run exclude=".nfo .idx .png"
     
@@ -42,4 +42,4 @@ After this run, there are only files in the media folders with the file extensio
 
 It is completely useless to apply the script to the pictures folder, all jpg, jpeg, tif, png etc. are deleted then! Likewise, it makes also no sense to think 'bulk cleaning' is media =/storage. After that you are allowed to reinstall your system!
 
-<b>I assume no liability, everyone must know what he does! Making a backup before is always useful!</b>
+<b>I assume no liability, everyone must know what he does! Making a backup before or - having at least one - is always useful!</b>

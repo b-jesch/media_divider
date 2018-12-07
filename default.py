@@ -7,6 +7,14 @@ EXCLUDE_FILE_EXT = ['.MKV', '.ISO', '.MP4', '.MPG', '.MPEG', '.MOV', '.H264', '.
 MIN_FILESIZE = 100 * 1024 * 1024  # 100 MB
 DONOTDELETE = '.donotdelete'
 
+def calcFileSize(filesize=0):
+    sizes = ['Bytes', 'kB', 'MB', 'GB', 'TB']
+    index = 0
+    while filesize > 1024:
+        filesize /= 1024.0
+        index += 1
+    return '%s %s' % ('%.2f' % filesize, sizes[index])
+
 if __name__ == '__main__':
     params = dict()
 
@@ -66,20 +74,20 @@ if __name__ == '__main__':
                             print str(e)
 
                     elif params['action'] == 'dry-run':
-                        print '[dry run]: will removed: %s' % filepath
+                        print '[dry run]: would be removed: %s' % filepath
                         _fwiped += 1
                     else:
                         pass
                 else:
-                    print '[file size]: will not removed because of filesize: %s' % filepath
+                    print '[file size]: wouldn\'t be removed: %s %s' % (filepath, calcFileSize(os.path.getsize(filepath)))
                     _fskipped += 1
             else:
                 _fskipped += 1
 
     if params['action'] == 'dry-run':
         print '%s files in %s directories proceed' % (_fcount, _dcount)
-        print '%s directories and %s files will be skipped' % (_dskipped, _fskipped)
-        print '%s empty directories (on first run) and %s files will be deleted' % (_dwiped, _fwiped)
+        print '%s directories and %s files would be skipped' % (_dskipped, _fskipped)
+        print '%s empty directories (on first run) and %s files would be deleted' % (_dwiped, _fwiped)
     else:
         print '%s files in %s directories proceed' % (_fcount, _dcount)
         print '%s directories and %s files skipped' % (_dskipped, _fskipped)
