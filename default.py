@@ -50,44 +50,44 @@ if __name__ == '__main__':
     _fwiped = 0
 
     for root, dirs, files in os.walk(params['media']):
-        dirs[:] = [d for d in dirs if d.upper() not in EXCLUDE_FOLDERS]
-        bSkip = False
+
         if DONOTDELETE in files:
             print '[donotdelete] skip folder %s' % root
             _dskipped += 1
-            bSkip = True
-        if bSkip: continue
+            continue
+
+        dirs[:] = [d for d in dirs if d.upper() not in EXCLUDE_FOLDERS]
         _dcount += 1
+
         for filenames in files:
             _fcount +=1
             filepath = os.path.join(root, filenames)
             _f, _e = os.path.splitext(filepath)
             if _e.upper() not in EXCLUDE_FILE_EXT:
-                if os.path.getsize(filepath) < MIN_FILESIZE:
-                    if params['action'] == 'execute':
-                        try:
+                try:
+                    if os.path.getsize(filepath) < MIN_FILESIZE:
+                        if params['action'] == 'execute':
                             os.remove(filepath)
                             print 'removed: %s' % filepath
                             _fwiped += 1
-                        except OSError, e:
-                            print 'ERROR: couldn\'t remove %s' % filepath
-                            print str(e)
-
-                    elif params['action'] == 'dry-run':
-                        print '[dry run]: would be removed: %s' % filepath
-                        _fwiped += 1
+                        elif params['action'] == 'dry-run':
+                            print '[dry run]: would be removed: %s' % filepath
+                            _fwiped += 1
+                        else:
+                            pass
                     else:
-                        pass
-                else:
-                    print '[file size]: wouldn\'t be removed: %s %s' % (filepath, calcFileSize(os.path.getsize(filepath)))
-                    _fskipped += 1
+                        print '[file size]: wouldn\'t be removed: %s %s' % (filepath, calcFileSize(os.path.getsize(filepath)))
+                        _fskipped += 1
+                except OSError, e:
+                    print str(e)
+                    continue
             else:
                 _fskipped += 1
 
     if params['action'] == 'dry-run':
         print '%s files in %s directories proceed' % (_fcount, _dcount)
-        print '%s directories and %s files would be skipped' % (_dskipped, _fskipped)
-        print '%s empty directories (on first run) and %s files would be deleted' % (_dwiped, _fwiped)
+        print '%s directories and %s files will be skipped' % (_dskipped, _fskipped)
+        print '%s empty directories (on first run) and %s files will be removed' % (_dwiped, _fwiped)
     else:
         print '%s files in %s directories proceed' % (_fcount, _dcount)
         print '%s directories and %s files skipped' % (_dskipped, _fskipped)
